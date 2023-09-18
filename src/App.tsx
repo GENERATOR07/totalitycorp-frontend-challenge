@@ -1,7 +1,27 @@
+import { createBrowserRouter } from "react-router-dom";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Cart from "./pages/cart";
+import Checkout from "./pages/checkout";
 import "./index.css";
 
-function App() {
-  return <h1 className="h-10 bg-black text-red-600">Totality Corp</h1>;
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "cart",
+    element: <Cart />,
+  },
+  {
+    path: "checkout",
+    element: <Checkout />,
+  },
+]);
 
-export default App;
+export default router;
