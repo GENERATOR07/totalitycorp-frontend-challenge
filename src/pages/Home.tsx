@@ -1,11 +1,14 @@
-import { useProducts } from "../hooks/useProducts";
+import Bottombar from "../components/bottombar";
+import Navbar from "../components/navbar";
+
+import ProductContainer from "../containers/product-container";
 
 export default function Home() {
-  const { products, isError, isLoading } = useProducts();
-
-  if (isError) return <h1>something went rong</h1>;
-
-  if (isLoading) return <h1> Loading</h1>;
-
-  return <div>{JSON.stringify(products)}</div>;
+  return (
+    <div className="p-4 flex flex-col">
+      <Navbar />
+      <ProductContainer />
+      <Bottombar />
+    </div>
+  );
 }
