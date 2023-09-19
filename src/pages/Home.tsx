@@ -1,5 +1,5 @@
 import Bottombar from "../components/bottombar";
-import Navbar from "../components/navbar";
+import Navbar from "@/components/navbar";
 
 import ProductContainer from "../containers/product-container";
 
