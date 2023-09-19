@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 import { SheetClose } from "./ui/sheet";
+import { queryClient } from "@/main";
+import { Product } from "@/types/product";
+import { filterproducts } from "@/helper/product-filter";
 export interface filterData {
   selectedCategory: string;
   minPrice: number;
   maxPrice: number;
 }
 
-interface FilterFormProps {
-  applyFilter: (filterData: filterData) => void;
-}
-
-const FilterForm: React.FC<FilterFormProps> = ({ applyFilter }) => {
+const FilterForm: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(1000);
 
-  const handleCategoryChange = (
+  const handleCategoryChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newCategory = event.target.value;
+    await queryClient.refetchQueries({
+      queryKey: ["products"],
+      type: "active",
+    });
+
+    console.log("this", newCategory);
 
     setSelectedCategory(newCategory);
+    console.log("category change", queryClient.getQueryData(["products"]));
   };
 
   const handlePriceRangeChange = (
@@ -30,8 +36,23 @@ const FilterForm: React.FC<FilterFormProps> = ({ applyFilter }) => {
     if (event.target.name === "min") setMinPrice(value);
     else setMaxPrice(value);
   };
+
   const handelFilter = () => {
-    applyFilter({ selectedCategory, minPrice, maxPrice });
+    const filters = { selectedCategory, minPrice, maxPrice };
+    const products: Product[] | undefined = queryClient.getQueryData([
+      "products",
+    ]);
+    console.log("before filte", products, filters);
+    const filteredData: Product[] = filterproducts(products!, filters);
+    console.log("after filter", filteredData);
+    queryClient.setQueryData(["products"], filteredData);
+  };
+
+  const handelClear = () => {
+    setSelectedCategory("");
+    setMinPrice(0);
+    setMaxPrice(1000);
+    handelFilter();
   };
   return (
     <div className="bg-white h-full w-full flex flex-col gap-4  p-2 rounded-xl">
@@ -76,12 +97,20 @@ const FilterForm: React.FC<FilterFormProps> = ({ applyFilter }) => {
           id="maxPriceRange"
         />
       </div>
-      <SheetClose
-        className="bg-blue-500 text-white rounded-md px-2 py-1 mt-2"
-        onClick={handelFilter}
-      >
-        Apply
-      </SheetClose>
+      <div className="flex gap-2 p-2">
+        <SheetClose
+          className="bg-blue-500 text-white rounded-md px-2 py-1 mt-2"
+          onClick={handelFilter}
+        >
+          Apply Filters
+        </SheetClose>
+        <SheetClose
+          className="bg-red-500 text-white rounded-md px-2 py-1 mt-2"
+          onClick={handelClear}
+        >
+          Clear Filters
+        </SheetClose>
+      </div>
     </div>
   );
 };

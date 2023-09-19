@@ -7,7 +7,9 @@ export default function Home() {
   return (
     <div className="p-4 flex flex-col">
       <Navbar />
-      <ProductContainer />
+      <div className="w-full flex justify-center items-center">
+        <ProductContainer />
+      </div>
       <Bottombar />
     </div>
   );

@@ -7,7 +7,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <img
         src={product.image}
         alt={product.title}
-        className="w-full h-44 md:h-80 lg:h-96 object-cover"
+        className="w-full h-44 md:h-72 lg:h-80 object-cover"
       />
       <div className="px-4 py-2">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold">

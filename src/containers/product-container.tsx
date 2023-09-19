@@ -9,7 +9,7 @@ export default function ProductContainer() {
 
   if (isLoading) return <h1> Loading</h1>;
   return (
-    <div className=" p-2 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-3">
+    <div className="  p-2 flex flex-col gap-4 sm:w-4/5 sm:grid sm:grid-cols-2 md:grid-cols-3">
       {products.map((data: Product) => (
         <ProductCard product={data} key={data.id} />
       ))}
