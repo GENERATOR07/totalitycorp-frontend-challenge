@@ -17,3 +17,17 @@ export const filterproducts = (
 
   return filteredData;
 };
+
+export const searchProducts = (
+  products: Product[],
+  search: string
+): Product[] => {
+  let matchingProducts: Product[];
+  matchingProducts = products.filter(
+    (product: Product) =>
+      product.description.includes(search) ||
+      product.category.includes(search) ||
+      product.title.includes(search)
+  );
+  return matchingProducts;
+};

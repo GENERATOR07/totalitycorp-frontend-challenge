@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SheetClose } from "./ui/sheet";
 import { queryClient } from "@/main";
 import { Product } from "@/types/product";
-import { filterproducts } from "@/helper/product-filter";
+import { filterproducts } from "@/helper/product-helper";
 export interface filterData {
   selectedCategory: string;
   minPrice: number;
@@ -52,7 +52,7 @@ const FilterForm: React.FC = () => {
     setSelectedCategory("");
     setMinPrice(0);
     setMaxPrice(1000);
-    handelFilter();
+    queryClient.refetchQueries(["products"]);
   };
   return (
     <div className="bg-white h-full w-full flex flex-col gap-4  p-2 rounded-xl">
