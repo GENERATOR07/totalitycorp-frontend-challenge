@@ -4,6 +4,9 @@ import Login from "./pages/login";
 import Cart from "./pages/cart";
 import Checkout from "./pages/checkout";
 import "./index.css";
+import { RouterProvider } from "react-router-dom";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -24,4 +27,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router;
+export default function App() {
+  return <RouterProvider router={router} />;
+}

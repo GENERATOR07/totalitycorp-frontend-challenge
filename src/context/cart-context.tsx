@@ -23,6 +23,15 @@ export default function CartContextProvider({
 
 export const useCartContex = () => {
   const context = useContext(CartContext);
-  const totalItems = context?.state.length;
-  return { cart: context?.state, dispatch: context?.dispatch, totalItems };
+  const totalItems = context?.state.reduce((acc, cv) => cv.count + acc, 0);
+  const totalValue = context?.state.reduce(
+    (acc, cv) => cv.price * cv.count + acc,
+    0
+  );
+  return {
+    cart: context?.state,
+    dispatch: context?.dispatch,
+    totalItems,
+    totalValue,
+  };
 };

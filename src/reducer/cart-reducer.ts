@@ -1,6 +1,6 @@
 import { Product } from "@/types/product";
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   count: number;
 }
 
@@ -8,7 +8,7 @@ export type Cart = CartItem[];
 
 export interface Actions {
   type: "Increment" | "Decrement" | "Remove";
-  payload?: Product;
+  payload: Product;
 }
 
 const incrementItemCount = (cart: Cart, payload: Product) => {
