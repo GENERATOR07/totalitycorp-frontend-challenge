@@ -23,10 +23,7 @@ const FilterForm: React.FC = () => {
       type: "active",
     });
 
-    console.log("this", newCategory);
-
     setSelectedCategory(newCategory);
-    console.log("category change", queryClient.getQueryData(["products"]));
   };
 
   const handlePriceRangeChange = (
@@ -42,9 +39,9 @@ const FilterForm: React.FC = () => {
     const products: Product[] | undefined = queryClient.getQueryData([
       "products",
     ]);
-    console.log("before filte", products, filters);
+
     const filteredData: Product[] = filterproducts(products!, filters);
-    console.log("after filter", filteredData);
+
     queryClient.setQueryData(["products"], filteredData);
   };
 

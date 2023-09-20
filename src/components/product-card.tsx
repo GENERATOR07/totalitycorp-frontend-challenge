@@ -1,7 +1,12 @@
 import React from "react";
 import { Product } from "../types/product";
+import { useCartContex } from "@/context/cart-context";
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+  const { dispatch } = useCartContex();
+  const handleAddToCart = () => {
+    dispatch?.({ type: "Increment", payload: product });
+  };
   return (
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
       <img
@@ -18,7 +23,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           Price: ${product.price}
         </p>
       </div>
-      <button className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+      <button
+        className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
+        onClick={handleAddToCart}
+      >
         Add to Cart
       </button>
     </div>
