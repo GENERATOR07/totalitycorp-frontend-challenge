@@ -1,28 +1,37 @@
-# React + TypeScript + Vite
+# Totality Corp Frontend Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
 
-Currently, two official plugins are available:
+This project is built using the following technologies and tools:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React:** A JavaScript library for building user interfaces.
+- **TypeScript:** A statically typed superset of JavaScript.
+- **React Query:** A data-fetching and state management library for React applications.
+- **Axios:** A JavaScript library for making HTTP requests.
+- **Tailwind CSS:** A utility-first CSS framework for creating responsive web designs.
+- **Vite:** A fast, modern, and flexible build tool and development server.
+- **ESLint:** A linter tool for identifying and fixing problems in your JavaScript and TypeScript code.
 
-## Expanding the ESLint configuration
+## Approach
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Project Structure
 
-- Configure the top-level `parserOptions` property like this:
+The project is structured into several key components, including:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **Home Page:** This page serves as the main landing page of our application. Users can view a list of products available in the Totality Corp online store. We've employed pagination, search functionality, and sorting options to provide a seamless shopping experience.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# totalitycorp-frontend-challenge
+- **Cart Page:** Our cart page displays a summary of products added by the user. Users can view item details, quantities, and total amounts. The cart functionality is managed using React Context and a reducer to maintain a global state.
+
+- **Checkout Page (Optional):** The checkout page allows users to enter their shipping and payment details and complete their purchase. This section features a shipping form, payment form, and a place order feature. The state for checkout is also managed using React Context and a reducer.
+
+### State Management
+
+We've adopted the React Context API along with a reducer to manage the state of the shopping cart and checkout process. This approach ensures that cart and checkout data is available to components across the application without the need for prop drilling.
+
+### Data Fetching
+
+To populate our application with product data, we leverage the power of React Query and Axios. These technologies make it easy to fetch, cache, and manage data from the [Fakestore API](https://fakestoreapi.com/). React Query helps improve the overall user experience by efficiently handling data loading, refetching, and caching.
+
+### Styling
+
+We've embraced Tailwind CSS as our styling framework. Tailwind CSS offers a utility-first approach, enabling us to rapidly create responsive and visually appealing user interfaces. It's a key part of our project's front-end design.
