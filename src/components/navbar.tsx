@@ -5,24 +5,30 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { BiFilterAlt } from "react-icons/bi";
 import FilterForm from "./filter-form";
 import { useCartContex } from "@/context/cart-context";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const { totalItems } = useCartContex();
+  const location = useLocation();
+
   return (
     <div className="flex gap-2  items-center justify-center sticky top-0  bg-white py-2 ">
-      <Sheet>
-        <SheetTrigger>
-          <BiFilterAlt size={20} />
-        </SheetTrigger>
-        <SheetContent
-          side="left"
-          className=" w-[250px] bg-gray-200 sm:w-[350px]  "
-        >
-          <FilterForm />
-        </SheetContent>
-      </Sheet>
-      <Searchbar />
+      {location.pathname === "/" ? (
+        <>
+          <Sheet>
+            <SheetTrigger>
+              <BiFilterAlt size={20} />
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className=" w-[250px] bg-gray-200 sm:w-[350px]  "
+            >
+              <FilterForm />
+            </SheetContent>
+          </Sheet>
+          <Searchbar />
+        </>
+      ) : null}
       <div className="hidden gap-10  items-center justify-center sm:flex absolute right-3 top-3">
         <Link to="/">
           {" "}
