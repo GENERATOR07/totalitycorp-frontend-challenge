@@ -7,6 +7,8 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 
 import "./index.css";
+import OrderSummary from "./pages/order-summary";
+import OrderConfirmation from "./pages/order-confirmation";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
   {
     path: "checkout",
     element: <Checkout />,
+  },
+  {
+    path: "order-summary",
+    element: <OrderSummary />,
+  },
+  {
+    path: "order-confirmation",
+    element: <OrderConfirmation />,
   },
 ]);
 

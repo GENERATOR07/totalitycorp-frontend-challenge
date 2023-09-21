@@ -1,7 +1,9 @@
 import { UseShippingContext } from "@/context/shipping-details-context";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ShippingPaymentForm = () => {
+  const navigate = useNavigate();
   const { shippingDetails, updateShippingDetails } = UseShippingContext();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -40,6 +42,7 @@ const ShippingPaymentForm = () => {
       return;
     }
     updateShippingDetails ? updateShippingDetails(formData) : null;
+    navigate("/order-summary");
   };
 
   return (

@@ -7,8 +7,8 @@ export interface CartItem extends Product {
 export type Cart = CartItem[];
 
 export interface Actions {
-  type: "Increment" | "Decrement" | "Remove";
-  payload: Product;
+  type: "Increment" | "Decrement" | "Remove" | "ClearCart";
+  payload?: Product;
 }
 const incrementItemCount = (cart: Cart, payload: Product) => {
   let item = cart.find((item: Product) => item.id === payload.id);
@@ -27,19 +27,6 @@ const incrementItemCount = (cart: Cart, payload: Product) => {
 
   return updatedCart;
 };
-// const incrementItemCount = (Icart: Cart, payload: Product) => {
-//   console.log({ Icart });
-//   let cart = [...Icart];
-//   let item = cart.find((item: Product) => item.id === payload.id);
-//   if (item) {
-//     console.log(item.count, item);
-//     item.count += 1;
-//     console.log(item.count, item);
-//     return [...cart];
-//   } else {
-//     return [...cart, { ...payload, count: 1 }];
-//   }
-// };
 
 const decrementItemCount = (cart: Cart, payload: Product) => {
   let item = cart.find((item: Product) => item.id === payload.id);
@@ -63,6 +50,10 @@ const decrementItemCount = (cart: Cart, payload: Product) => {
 const removeItem = (cart: Cart, payload: Product) => {
   return cart.filter((item) => item.id != payload.id);
 };
+
+const clearCart = () => {
+  return [];
+};
 export const CartReducer = (cart: Cart, action: Actions) => {
   switch (action.type) {
     case "Increment":
@@ -71,6 +62,8 @@ export const CartReducer = (cart: Cart, action: Actions) => {
       return decrementItemCount(cart, action.payload!);
     case "Remove":
       return removeItem(cart, action.payload!);
+    case "ClearCart":
+      return clearCart();
     default:
       return cart;
   }
