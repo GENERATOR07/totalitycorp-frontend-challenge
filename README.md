@@ -18,7 +18,7 @@ This project is built using the following technologies and tools:
 
 The project is structured into several key components, including:
 
-- **Home Page:** This page serves as the main landing page of our application. Users can view a list of products available in the Totality Corp online store. We've employed pagination, search functionality, and sorting options to provide a seamless shopping experience.
+- **Home Page:** This page serves as the main landing page of our application. Users can view a list of products available in the Totality Corp online store. We've employed  search functionality, and sorting options to provide a seamless shopping experience.
 
 - **Cart Page:** Our cart page displays a summary of products added by the user. Users can view item details, quantities, and total amounts. The cart functionality is managed using React Context and a reducer to maintain a global state.
 
