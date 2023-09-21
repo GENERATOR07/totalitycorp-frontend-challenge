@@ -5,7 +5,6 @@ import { useCartContex } from "@/context/cart-context";
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const { dispatch } = useCartContex();
   const handleAddToCart = () => {
-    console.log("kya");
     dispatch ? dispatch({ type: "Increment", payload: product }) : null;
   };
   return (

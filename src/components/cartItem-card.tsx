@@ -26,7 +26,7 @@ export default function CartItemCard({ item }: cartItemCardProps) {
         >
           <AiOutlineMinusCircle />
         </button>
-        <span className="text-sm sm:text-base">{item.count}</span>
+        <span className="text-sm sm:text-">{item.count}</span>
         <button
           onClick={() => dispatch?.({ type: "Increment", payload: item })}
         >

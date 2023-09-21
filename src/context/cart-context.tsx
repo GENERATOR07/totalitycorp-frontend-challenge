@@ -12,7 +12,10 @@ export const CartContext = createContext<CartContext | null>(null);
 export default function CartContextProvider({
   children,
 }: CartContextProviderProps) {
-  const [state, dispatch] = useReducer(CartReducer, []);
+  const [state, dispatch] = useReducer(
+    CartReducer as React.Reducer<Cart, Actions>,
+    [] as Cart
+  );
 
   return (
     <CartContext.Provider value={{ state, dispatch }}>

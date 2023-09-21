@@ -15,7 +15,10 @@ export default function Navbar() {
         <SheetTrigger>
           <BiFilterAlt size={20} />
         </SheetTrigger>
-        <SheetContent side="left" className=" w-[250px] bg-black sm:w-[350px] ">
+        <SheetContent
+          side="left"
+          className=" w-[250px] bg-gray-200 sm:w-[350px]  "
+        >
           <FilterForm />
         </SheetContent>
       </Sheet>

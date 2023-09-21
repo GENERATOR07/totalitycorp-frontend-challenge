@@ -52,7 +52,7 @@ const FilterForm: React.FC = () => {
     queryClient.refetchQueries(["products"]);
   };
   return (
-    <div className="bg-white h-full w-full flex flex-col gap-4  p-2 rounded-xl">
+    <div className=" h-full w-full flex flex-col gap-4  p-2 rounded-xl ">
       <div className="mb-4  p-2">
         <label className="block text-gray-700">Select Category:</label>
         <select
